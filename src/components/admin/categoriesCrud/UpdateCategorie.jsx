@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function UpdateCategories({ categoryId, onUpdate }) {
+export function UpdateCategories({ categoryId, onUpdate }) {
   const [newCategoryName, setNewCategoryName] = useState('');
 
   const handleUpdate = () => {
@@ -14,5 +14,3 @@ function UpdateCategories({ categoryId, onUpdate }) {
     </div>
   );
 }
-
-export default UpdateCategories;
