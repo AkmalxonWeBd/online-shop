@@ -3,8 +3,12 @@ import UpdateCategories from './UpdateCategorie';
 import DeleteCategories from './DeleteCategorie';
 import Mock from '../sidebar/mock';
 
+<<<<<<< HEAD
+function Table({ categories, onSearch, onDelete, onUpdate }) {
+=======
 
 export default function CategoriesCrud({ categories, onSearch, onDelete, onUpdate }) {
+>>>>>>> e9b88470c83798b5b42cf955dfdc526b26d0dbd5
   return (
     <div>
       <Mock />
@@ -13,6 +17,10 @@ export default function CategoriesCrud({ categories, onSearch, onDelete, onUpdat
   );
 }
 
+<<<<<<< HEAD
+export default Table;
+=======
 
 
 
+>>>>>>> e9b88470c83798b5b42cf955dfdc526b26d0dbd5
