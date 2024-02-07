@@ -1,6 +1,8 @@
 import React from 'react'
 import TopHeader from '../TopHeader'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SidebarCom() {
   return (
@@ -131,12 +133,15 @@ function SidebarCom() {
                <span className="flex-1 ms-3 whitespace-nowrap">Yetkazib Berish</span>
             </a>
          </li>
+<<<<<<< HEAD
          <li className='sidebar'>
             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path><path d="M9 17v-5"></path><path d="M12 17v-1"></path><path d="M15 17v-3"></path></svg>
                <span className="flex-1 ms-3 whitespace-nowrap">Yon Daftarcha</span>
             </a>
          </li>
+=======
+>>>>>>> a9c481bc93db84aaf65018e352f91bdca121de57
       </ul>
    </div>
 </aside>
@@ -240,6 +245,7 @@ function SidebarCom() {
             </p>
          </div>
       </div>
+      <ToastContainer />
    </div>
 </div>
 
