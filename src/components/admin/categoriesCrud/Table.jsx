@@ -1,6 +1,7 @@
 import React from 'react';
-import { DeleteCategories } from './DeleteCategorie';
-import { UpdateCategories } from './UpdateCategorie';
+import UpdateCategories from './UpdateCategorie';
+import DeleteCategories from './DeleteCategorie';
+
 
 function Table({ categories, onSearch, onDelete, onUpdate }) {
   return (
@@ -21,7 +22,7 @@ function Table({ categories, onSearch, onDelete, onUpdate }) {
               <td>{category.name}</td>
               <td>
                 <UpdateCategories categoryId={category.id} onUpdate={onUpdate} />
-                {/* <DeleteCategories categoryId={category.id} onDelete={onDelete} /> */}
+                <DeleteCategories categoryId={category.id} onDelete={onDelete} />
               </td>
             </tr>
           ))}
