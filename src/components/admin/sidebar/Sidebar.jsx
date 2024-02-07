@@ -1,6 +1,8 @@
 import React from 'react'
 import TopHeader from '../TopHeader'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SidebarCom() {
   return (
@@ -234,6 +236,7 @@ function SidebarCom() {
             </p>
          </div>
       </div>
+      <ToastContainer />
    </div>
 </div>
 

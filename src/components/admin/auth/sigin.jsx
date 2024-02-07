@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './login.css';
 
 function Login() {
@@ -7,60 +9,69 @@ function Login() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const checkLogin = () => {
-    if (username === 'admin' && password === '123') {
-      // Foydalanuvchi nomi va parol to'g'ri bo'lsa
-      // Ma'lumotlarni saqlash yoki kerakli sahifaga o'tish
-      // Masalan, localStorage yoki qo'shimcha sahifa nomini ishlatish mumkin
-      localStorage.setItem('isLoggedIn', 'true');
-      // Keyin boshqa sahifaga o'tish
-      navigate('/admin/home');
-    } else {
-      alert("Noto'g'ri foydalanuvchi nomi yoki parol. Iltimos, qaytadan urinib ko'ring.");
+  const checkLogin = async () => {
+    try {
+      const response = await fetch('https://omofood.pythonanywhere.com/api/v1/users/token/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+
+      if (response.ok) {
+        localStorage.setItem('isLoggedIn', 'true');
+        navigate('/admin/home');
+        // toast.success(`Siz kira olmadingiz`);
+        throw new Error('Siz kiritgan parol yoki username xato');
+      } else {
+        throw new Error('Siz kiritgan parol yoki username xato');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      toast.error(error.message || 'An error occurred during login');
     }
   };
 
   return (
-    <div className='hbvsdj'>
+    <div className='body'>
       <div className="box">
-        <div className="login">
-          <div className="loginBx">
-            <h1>Kirish</h1>
-            <div className="inputBox">
-              <input
-                id="username"
-                className="user"
-                type="text"
-                required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <span>Login</span>
-            </div>
-            <div className="inputBox">
-              <input
-                id="password"
-                className="pw"
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <span>password</span>
-            </div>
+        <form>
+          <h2>Login</h2>
+          <div className="inputBx">
+            <span></span>
             <input
-              className="submit"
-              type="submit"
-              value="Kirish"
-              onClick={checkLogin}
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div className='group'>
-            <h1>Parol yo'qmi</h1>
+          <div className="inputBx">
+            <span></span>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
-        </div>
+          <div className="inputBx">
+            <input type="button" value="Sign in" onClick={checkLogin} />
+          </div>
+          <div className="groupi">
+            <a href="https://t.me/akmalxon000">
+              <p>Forgat Password</p>
+            </a>
+          </div>
+        </form>
+        <ToastContainer />
       </div>
     </div>
   );
 }
+
 export default Login;
