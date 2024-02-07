@@ -26,7 +26,7 @@ function Login() {
         localStorage.setItem('isLoggedIn', 'true');
         navigate('/admin/home');
         // toast.success(`Siz kira olmadingiz`);
-        throw new Error('Siz kiritgan parol yoki username xato');
+        throw new Error('Siz kirdingiz');
       } else {
         throw new Error('Siz kiritgan parol yoki username xato');
       }
