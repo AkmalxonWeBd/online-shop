@@ -8,7 +8,8 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
+ 
+ 
   const checkLogin = async () => {
     try {
       const response = await fetch('https://omofood.pythonanywhere.com/api/v1/users/token/', {
@@ -21,14 +22,20 @@ function Login() {
           password: password,
         }),
       });
-
+  
       if (response.ok) {
         localStorage.setItem('isLoggedIn', 'true');
-        navigate('/admin/home');
-        // toast.success(`Siz kira olmadingiz`);
-        throw new Error('Siz kirdingiz');
+        
+        // Correctly show success message before navigation
+        toast.success('Siz kirdingiz', {
+          onClose: () => {
+            navigate('/admin/home');
+          },
+          autoClose: 5000, // Adjust based on how long you want the toast to show
+        });
       } else {
-        throw new Error('Siz kiritgan parol yoki username xato');
+        // Handle non-OK response without throwing an error unnecessarily
+        toast.error('Siz kira olmadingiz');
       }
     } catch (error) {
       console.error('Error during login:', error);

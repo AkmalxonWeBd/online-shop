@@ -25,3 +25,4 @@ function AddCategories({ onAdd }) {
 }
 
 export default AddCategories;
+

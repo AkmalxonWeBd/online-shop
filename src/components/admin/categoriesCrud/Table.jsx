@@ -2,7 +2,6 @@ import React from 'react';
 import UpdateCategories from './UpdateCategorie';
 import DeleteCategories from './DeleteCategorie';
 
-
 function Table({ categories, onSearch, onDelete, onUpdate }) {
   return (
     <div>
@@ -33,5 +32,3 @@ function Table({ categories, onSearch, onDelete, onUpdate }) {
 }
 
 export default Table;
-
-
